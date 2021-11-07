@@ -1,0 +1,86 @@
+﻿@model CrudConsumoMiniMarket.Models.Productos
+
+@{
+    ViewBag.Title = "Eliminar Productos";
+}
+
+<h2>Eliminar Productos</h2>
+<h3>Esta seguro que desea eliminar este registro?</h3>
+<div>
+    
+    <dl class="dl-horizontal">
+        <dt>
+            <label>Código</label>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Codigo)
+        </dd>
+
+        <dt>
+            <label>Descripción</label>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Descripcion)
+        </dd>
+
+        <dt>
+            <label>Categoria</label>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Categorias.Descripcion)
+        </dd>
+
+        <dt>
+            <label>Proveedor</label>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Proveedores.Descripcion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Marca)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Marca)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Medida)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Medida)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Cantidad)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cantidad)
+        </dd>
+
+        <dt>
+            <label>Precio Unitario</label>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PrecioUnitario)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()){
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Eliminar" class="btn btn-info" /> |
+            @Html.ActionLink("Listado de Productos", "Index")
+        </div>
+    }
+</div>

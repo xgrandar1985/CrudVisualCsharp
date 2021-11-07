@@ -1,0 +1,1 @@
+En la carpeta <ScriptsDb> se encuentra un backup de la base datos y el script de la base en version Sql Server 2014 

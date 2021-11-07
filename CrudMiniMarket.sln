@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.1525
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InventarioProductosWebApi", "InventarioProductosWebApi\InventarioProductosWebApi.csproj", "{DFBEDB4E-D048-409A-9A65-4DF1BECD4A6C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CrudConsumoMiniMarket", "CrudConsumoMiniMarket\CrudConsumoMiniMarket.csproj", "{FF2B7E46-F1D1-4841-A136-618AF216501B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DFBEDB4E-D048-409A-9A65-4DF1BECD4A6C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DFBEDB4E-D048-409A-9A65-4DF1BECD4A6C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DFBEDB4E-D048-409A-9A65-4DF1BECD4A6C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DFBEDB4E-D048-409A-9A65-4DF1BECD4A6C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FF2B7E46-F1D1-4841-A136-618AF216501B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FF2B7E46-F1D1-4841-A136-618AF216501B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FF2B7E46-F1D1-4841-A136-618AF216501B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FF2B7E46-F1D1-4841-A136-618AF216501B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {EE20BB23-398C-418B-9B46-905EB6D06DA1}
+	EndGlobalSection
+EndGlobal

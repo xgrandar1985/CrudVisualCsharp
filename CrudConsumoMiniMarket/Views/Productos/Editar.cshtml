@@ -1,0 +1,160 @@
+﻿@model CrudConsumoMiniMarket.Models.Productos
+
+@{
+    ViewBag.Title = "Editar Productos";
+
+    string _IdCategoria = string.Empty;
+    string _IdProveedor = string.Empty;
+    if (Model !=null)
+    {
+        _IdCategoria = Model.IdCategoria +"";
+        _IdProveedor = Model.IdProveedor + "";
+    }
+
+
+}
+
+
+@using (Html.BeginForm("Editar", "Productos", FormMethod.Post, new { id = "frmEditProducto" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+
+        <h2 class="text-info">Editar Producto</h2>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+       
+        <input type="hidden" id="IdProducto" name="IdProducto" value="@Model.IdProducto" />
+        <div class="form-group">
+            <label class="control-label col-md-2">Código</label>
+            <div class="col-md-10">
+                <input type="text" name="Codigo" id="Codigo" class="form-control" readonly ="readonly" value="@Model.Codigo" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2">Descripción</label>
+            <div class="col-md-10">
+                <input type="text" name="Descripcion" id="Descripcion" class="form-control" maxlength="50" value="@Model.Descripcion" placeholder="Ingrese la descripción" />
+                @Html.ValidationMessageFor(model => model.Descripcion, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2">Categoria</label>
+            <div class="col-md-10">
+                <select name="IdCategoria" id="IdCategoria" class="form-control">
+                    <option   value="">Seleccione una...</option>
+                </select>
+                @Html.ValidationMessageFor(model => model.IdCategoria, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2">Proveedor</label>
+            <div class="col-md-10">
+                <select name="IdProveedor" id="IdProveedor" class="form-control">
+                    <option   value="">Seleccione uno...</option>
+                </select>
+                @Html.ValidationMessageFor(model => model.IdProveedor, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Marca, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input type="text" name="Marca" id="Marca" class="form-control" maxlength="50" value="@Model.Marca" placeholder="Ingrese marca" />
+                @Html.ValidationMessageFor(model => model.Marca, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Medida, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input type="text" name="Medida" id="Medida" class="form-control" maxlength="50" value="@Model.Medida" placeholder="Ingrese la medida" />
+                @Html.ValidationMessageFor(model => model.Medida, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Cantidad, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input type="number" name="Cantidad" id="Cantidad" class="form-control" value="@Model.Cantidad" placeholder="Ingrese la cantidad" />
+                @Html.ValidationMessageFor(model => model.Cantidad, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label id="lblPrecioUnitario" class="control-label col-md-2">Precio Unitario</label>
+            <div class="col-md-10">
+                <input type="text" name="PrecioUnitario" id="PrecioUnitario" class="form-control" value="@Model.PrecioUnitario" placeholder="Ingrese el precio unitario" />
+                @Html.ValidationMessageFor(model => model.PrecioUnitario, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Actualizar" class="btn btn-info" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Listado de Productos", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+
+    <script>
+
+        $(document).ready(function () {
+            cargar_categorias();
+            cargar_proveedores();
+        });
+
+        function cargar_categorias() {
+            $.get(
+                  '@Url.Action("ObtenerCategorias", "Productos")'
+               )
+              .done(function (data) {
+                  $.each(data, function (i, row) {
+                      var $option = $('<option>');
+                      $option.val(row.Id);
+                      $option.html(row.Descripcion);
+                      $('#IdCategoria').append($option);
+                  });
+                  $("#IdCategoria").val(@_IdCategoria);
+
+              })
+              .fail(function (data) {
+                  console.log('error !!!');
+              }
+          );
+        }
+
+        function cargar_proveedores() {
+            $.get(
+                '@Url.Action("ObtenerProveedores", "Productos")'
+             )
+            .done(function (data) {
+                $.each(data, function (i, row) {
+                    var $option = $('<option>');
+                    $option.val(row.IdProveedor);
+                    $option.html(row.Descripcion);
+                    $('#IdProveedor').append($option);
+                });
+                $("#IdProveedor").val(@_IdProveedor);
+            })
+            .fail(function (data) {
+                console.log('error !!!');
+            }
+        );
+        }
+    </script>
+
+}
